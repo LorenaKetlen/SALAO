@@ -1,0 +1,7 @@
+{
+  "name": "SALAO",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

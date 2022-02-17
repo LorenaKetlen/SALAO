@@ -1,0 +1,43 @@
+<app-header-general titulo="Cadastrar user" pagina="login" > </app-header-general>
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-img src="./assets/icon/simbolo.png" id="logo"></ion-img>
+    </ion-row>
+
+    <ion-row id="title1-box">
+        <ion-title id="title1" position="floating">SALAO INCLUSIVO</ion-title>
+    </ion-row>
+  </ion-grid>
+
+  <form id= "form-box" [formGroup]="form" (ngSubmit)= "submitForm()">
+    <ion-item>
+      <ion-label position="floating">NOME:</ion-label>
+      <ion-input type="text" placeholder="Informe o seu nome" formControlName="nome"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label position="floating">EMAIL:</ion-label>
+      <ion-input type="text" placeholder="Informe o seu Email" formControlName="email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">ENDEREÇO:</ion-label>
+    <ion-input type="text" placeholder="Informe o seu endereço" formControlName="endereco"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating">TELEFONE</ion-label>
+  <ion-input type="text" formControlName="telefone" placeholder="(00) 00000-0000" [brmasker]="{mask: '(99) 99999-9999'}" maxLength=15 minLength=15></ion-input>  </ion-item>
+
+
+  <!-- <ion-label position="floating">E-mail:<ion-label> -->
+    <!-- <ion-input type="text" placeholder="Insira o seu e-mail" formControlName="email"></ion-input> -->
+    <ion-item>
+      <ion-label position="floating">SENHA:</ion-label>
+      <ion-input type="password" placeholder="Insira a sua senha" formControlName="senha"></ion-input>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.senha.errors?.required">minimo 5 cacarteres
+      </span>
+    </ion-item>
+      <ion-col>
+        <ion-button type="submit" expand="block" color="secondary" [disabled]="!form.valid"><p>CADASTRAR</p></ion-button>
+      </ion-col>
+  </form>
+</ion-content>

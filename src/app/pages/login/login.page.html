@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div id="container">
+    <ion-grid>
+      <ion-row>
+        <ion-img src="./assets/icon/simbolo.png" id="logo"></ion-img>
+      </ion-row>
+
+      <ion-row id="title1-box">
+          <ion-title id="title1" position="floating">SALÃO INCLUSIVO</ion-title>
+      </ion-row>  
+      <form   id="form-box" [formGroup]="formGroup" (ngSubmit)= "validar()">
+        <ion-row>
+          <ion-col>
+            <ion-label position="floating">E-MAIL:</ion-label>
+            <ion-input type="text" placeholder="Insira o seu e-mail" formControlName="email"></ion-input>
+          
+            <ion-label position="floating">SENHA:</ion-label>
+            <ion-input type="password" placeholder="Insira a sua senha" formControlName="senha"></ion-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-button type="submit" expand="block" color="secondary" [disabled]="!formGroup.valid"><p>ENTRAR</p></ion-button>
+          </ion-col>
+        </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button  expand="block" color="primary" routerLink='/cadastro-user'><p>CADASTRAR</p> </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+    </ion-grid>  
+  </div>
+</ion-content>

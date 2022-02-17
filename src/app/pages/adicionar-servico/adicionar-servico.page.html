@@ -1,0 +1,82 @@
+<app-header-general id= "title1" title="Agendar Serviço" tela="conta"></app-header-general>
+<ion-content>
+  <form [formGroup]="formGroup" (ngSubmit)= "submitForm()">
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position= "floating">DATA DO AGENDAMENTO:</ion-label>
+          <ion-input [value]="DV2" formControlName="dataAgendamento" readonly></ion-input>
+          <ion-button fill="clear" id="open-date-input-2">
+            <ion-icon name="calendar-number"></ion-icon>
+          </ion-button>
+          <ion-popover trigger="open-date-input-2">
+            <ng-template>
+              <ion-datetime
+                #popoverDatetime2
+                presentation="date"
+                (ionChange)="DV2 = formatDate(popoverDatetime2.value)"
+              ></ion-datetime>
+            </ng-template>
+          </ion-popover>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <!-- IMPORTANTE,POSTERIORMENTE RECEBERÁ OS VALORES
+        DO BANCO DE DADOS DA FUNCAO ADDSERVIÇO NA PARTE DOS FUNCIONARIOS-->
+          <ion-label>TIPO DE SERVIÇO:</ion-label>
+          <ion-select  formControlName="idTipo" cancelText="Cancelar" OkText="Confirmar" placeholder="Informe o tipo da Servico"   >
+            <ion-select-option *ngFor="let tipo of tipos, let i=index" value="{{tipo.id}}"> {{tipo.descricao}} </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label>FORMA DE PAGAMENTO:</ion-label>
+          <ion-select interface="popover" formControlName="formapgt" >
+            <ion-select-option value="primary">CARTÃO
+            <ion-icon name="alert-circle-outline"></ion-icon></ion-select-option>
+            <ion-select-option value="secondary">DINHEIRO
+            <ion-icon name="alert-circle-outline"></ion-icon> </ion-select-option>
+            <ion-select-option value="terciary">PIX </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-col>
+      <ion-item>
+        <ion-label>HORARIO:</ion-label>
+        <ion-select interface="popover" formControlName="horario" >
+          <ion-select-option value="7">07:00</ion-select-option>
+          <ion-select-option value="8">08:00</ion-select-option>
+          <ion-select-option value="9">09:00</ion-select-option>
+          <ion-select-option value="10">10:00</ion-select-option>
+          <ion-select-option value="11">11:00</ion-select-option>
+          <ion-select-option value="13">13:00</ion-select-option>
+          <ion-select-option value="14">14:00</ion-select-option>
+          <ion-select-option value="15">15:00</ion-select-option>
+          <ion-select-option value="16">16:00</ion-select-option>
+          <ion-select-option value="17">17:00</ion-select-option>
+          <ion-select-option value="18">18:00</ion-select-option>
+          <ion-select-option value="19">19:00</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+
+  <!--<ion-col>
+      <ion-item>
+        POSTERIORMENTE, O VALOR DE SERVIÇO VAI RECEBER OS VALORES DO SISTEMA 
+        DO SALAO quando o banco de dados for conectado
+      <ion-label position= "floating">VALOR:</ion-label>
+        <ion-input type="text"  formControlName="valor"></ion-input>
+      </ion-item>
+    </ion-col>
+  
+    FAZER ENVIAR MENSAGEM PARA O SISTEMA AO SUBMENTER OS DADOS DO FORMULÁRIO conectar o banco de dados pra o sitema dos 
+  funcionarios receber os dados dos clientes-->
+    <ion-button type="submit" expand="block" color="secondary" [disabled]="!formGroup.valid"> AGENDAR </ion-button>
+  </form>
+</ion-content>

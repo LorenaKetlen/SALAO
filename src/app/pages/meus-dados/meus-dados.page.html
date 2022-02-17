@@ -1,0 +1,58 @@
+<ion-content>
+  <form [formGroup]="formGroup" (ngSubmit)="submitForm()">
+    <app-header-form titulo="Meus dados" tela="home"></app-header-form>
+
+     <div id="container">
+        <ion-grid>
+          <ion-row id="title1-box">
+            <ion-col>
+              <ion-text id="title1" class="ion-text-left">ATUALIZAR</ion-text>
+            </ion-col>
+          </ion-row>  
+
+          <div id="container">
+          <ion-row>
+            <ion-col>
+              <ion-label position="floating">NOME:</ion-label>
+              <ion-input type="text" formControlName="nome"></ion-input>
+              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nome.errors?.required">
+                <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nome.errors?.required">
+                </span>
+              </span>
+            </ion-col>
+
+            <ion-col>
+              <ion-label position="floating">TELEFONE:</ion-label>
+              <ion-input type="text" formControlName="telefone" placeholder="(00) 00000-0000" [brmasker]="{mask: '(99) 99999-9999'}" maxLength=15></ion-input>
+              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.telefone.errors?.required">
+              </span>
+            </ion-col>
+
+            <ion-col>
+              <ion-label position="floating">ENDERECO:</ion-label>
+              <ion-input type="text" formControlName="endereco"></ion-input>
+              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.endereco.errors?.required">
+              </span>
+            </ion-col>
+          </ion-row>           
+
+          <ion-row>
+            <ion-col>
+              <ion-label position="floating">E-MAIL:</ion-label>
+              <ion-input type="email" formControlName="email"></ion-input>
+              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.required">
+              </span>
+            </ion-col>
+              <ion-col>
+              <ion-label position="floating">SENHA:</ion-label>
+              <ion-input type="password" formControlName="senha"></ion-input>
+              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.senha.errors?.required">Informe a senha.</span>
+              <span class="error ion-padding" *ngIf="isSubmitted && errorControl.senha.errors?.minlength">minimo 5 caracteres.</span>
+            </ion-col>
+          </ion-row>
+        </div>
+  
+        </ion-grid>  
+      </div> 
+    </form>
+  </ion-content>

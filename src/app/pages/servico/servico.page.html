@@ -1,0 +1,30 @@
+<app-header-general title="SOLICITAÇÕES" tela="home"></app-header-general>
+<ion-content>
+  <div id="container">
+    <ion-grid>
+      <ion-row id="title1-box">
+        <ion-col>
+          <ion-text id="title1" class="ion-text-left">SOLICITAÇÕES</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-list> <!--NÃO TA MOSTRANDO O NOME SÓ O ID DO SERVIÇO!!!!-->
+        <!--O PAI CONCERTOU :DDDDDDDDDDDDDDDDDDDD-->
+        <ion-item-sliding *ngFor="let servico of servicos">
+          <ion-item [routerLink]="'/adicionar-servico/' + servico.id" detail>
+              <ion-icon slot="end" name="checkmark" color="{{servico.idTipo}}"></ion-icon>
+              <ion-label>{{servico.descricao}} </ion-label>
+              <ion-note>SOLICITAÇÃO PARA: {{servico.dataAgendamento}}  às {{servico.horario}}:00 </ion-note>
+          </ion-item>
+          <ion-item-options side="start">
+            <ion-item-option color="{{servico.formapgt}}" (click)="excluirServico(servico.id)">CANCELAR SOLICITAÇÃO</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-grid>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink="/adicionar-servico" color=primary>
+        <ion-icon name="duplicate-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+</ion-content>
